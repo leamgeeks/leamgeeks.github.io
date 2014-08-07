@@ -54,6 +54,46 @@ function switchPeople() {
     }
 
 }
- 
 
+function nth(d) {
+    if(d>3 && d<21) return 'th';
+    switch (d % 10) {
+	case 1:  return "st";
+	case 2:  return "nd";
+	case 3:  return "rd";
+	default: return "th";
+    }
+}
+
+function getNextEvent(skip) {
+    var next = new Date(), in_a_week;
+    while(true) {
+        if(next.getDay() == 2) {
+            in_a_week = new Date(next.getTime() + (7*24*60*60*1000));
+            if(in_a_week.getMonth() != next.getMonth() && skip-- == 0)
+                return next;
+            else
+                next = in_a_week; //skip to the next week
+	}
+        else {
+	    var days_till_tuesday = (9-next.getDay()) % 7;
+            next = new Date(next.getTime() + (days_till_tuesday*24*60*60*1000));
+        }
+    }
+}
+
+function nextDates() {
+    var now = new Date();
+    var d = getNextEvent(0);
+    var d2 = getNextEvent(1);
+    var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+
+    document.getElementById("js-date-next").innerHTML = "Tuesday, " + monthNames[d.getMonth()] + ", " + d.getDate() + nth(d.getDate());
+
+    document.getElementById("js-date-next-next").innerHTML = monthNames[d2.getMonth()] + "'s meet: Tuesday, " + monthNames[d2.getMonth()] + " " + d2.getDate() + nth(d2.getDate()) + ".";
+
+    document.getElementById("js-days-to-go").innerHTML = "That's in " + Math.round((d.getTime() - now.getTime())/(24*60*60*1000)) + " days.";
+}
+
+nextDates();
 rotatePeople();
