@@ -77,14 +77,16 @@ function getNextEvent(skip) {
     while(true) {
         if (next.getDay() == dow) {
             nextWeek = new Date(next.getTime() + (7 * 24 * 60 * 60 * 1000));
-            if (nextWeek.getMonth() != next.getMonth() && skip-- == 0)
+            if (nextWeek.getMonth() != next.getMonth() && skip-- == 0) // Normal meetings last Tuesday of month
                 return next;
+			else if (next.getMonth() == 11 && next.getDate() >= 15 && next.getDate() <= 21) // Decmeber's meetings are the 3rd Tuesday
+				return next;
             else
                 next = nextWeek; //skip to the next week
         }
         else {
-	    var days_till_dow = (7 + dow - next.getDay()) % 7;
-            next = new Date(next.getTime() + (days_till_dow * 24 * 60 * 60 * 1000));
+			var days_till_dow = (7 + dow - next.getDay()) % 7;
+			next = new Date(next.getTime() + (days_till_dow * 24 * 60 * 60 * 1000));
         }
     }
 
