@@ -1,8 +1,6 @@
 /*
 //  Leamington Geeks
 //
-//  Frontend Routes
-//      /routes/index.js
 */
 
 var people = [
@@ -38,7 +36,6 @@ function rotatePeople() {
 
 }
 
-
 function switchPeople() {
 
     document.getElementById("js-people").innerHTML = randomisedPeople[currentPersonIndex % randomisedPeople.length];
@@ -60,10 +57,10 @@ function nth(d) {
     if (d>3 && d<21)
         return 'th';
     switch (d % 10) {
-	case 1:  return "st";
-	case 2:  return "nd";
-	case 3:  return "rd";
-	default: return "th";
+        case 1:  return "st";
+        case 2:  return "nd";
+        case 3:  return "rd";
+        default: return "th";
     }
 
 }
@@ -74,19 +71,19 @@ function getNextEvent(skip) {
         nextWeek,
         dow = 2; // Tuesday
 
-    while(true) {
+    while (true) {
         if (next.getDay() == dow) {
             nextWeek = new Date(next.getTime() + (7 * 24 * 60 * 60 * 1000));
             if (nextWeek.getMonth() != next.getMonth() && skip-- == 0) // Normal meetings last Tuesday of month
                 return next;
-			else if (next.getMonth() == 11 && next.getDate() >= 15 && next.getDate() <= 21) // Decmeber's meetings are the 3rd Tuesday
-				return next;
+            else if (next.getMonth() == 11 && next.getDate() >= 15 && next.getDate() <= 21) // Decmeber's meetings are the 3rd Tuesday
+                return next;
             else
                 next = nextWeek; //skip to the next week
         }
         else {
-			var days_till_dow = (7 + dow - next.getDay()) % 7;
-			next = new Date(next.getTime() + (days_till_dow * 24 * 60 * 60 * 1000));
+            var days_till_dow = (7 + dow - next.getDay()) % 7;
+            next = new Date(next.getTime() + (days_till_dow * 24 * 60 * 60 * 1000));
         }
     }
 
