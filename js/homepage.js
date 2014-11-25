@@ -71,12 +71,17 @@ function getNextEvent(skip) {
         nextWeek,
         dow = 2; // Tuesday
 
+    // fix time - so days till next event works properly
+    next.setHours(23);
+    next.setMinutes(59);
+    next.setSeconds(59);
+
     while (true) {
         if (next.getDay() == dow) {
             nextWeek = new Date(next.getTime() + (7 * 24 * 60 * 60 * 1000));
-            if (nextWeek.getMonth() != next.getMonth() && skip-- == 0) // Normal meetings last Tuesday of month
+            if (next.getMonth() == 11 && next.getDate() >= 15 && next.getDate() <= 21 && skip-- == 0) // Decmeber's meetings are the 3rd Tuesday
                 return next;
-            else if (next.getMonth() == 11 && next.getDate() >= 15 && next.getDate() <= 21) // Decmeber's meetings are the 3rd Tuesday
+            else if (next.getMonth() != 11 && nextWeek.getMonth() != next.getMonth() && skip-- == 0) // Normal meetings last Tuesday of month
                 return next;
             else
                 next = nextWeek; //skip to the next week
@@ -96,7 +101,7 @@ function nextDates() {
         d2 = getNextEvent(1),
         monthNames = [ "January", "February", "March", "April", "May", "June",
                        "July", "August", "September", "October", "November", "December" ],
-        days_till_next = Math.round((d.getTime() - now.getTime())/(24 * 60 * 60 * 1000));
+        days_till_next = Math.floor((d.getTime() - now.getTime())/(24 * 60 * 60 * 1000));
 
     document.getElementById("js-date-next").innerHTML = "Tuesday, " + monthNames[d.getMonth()] + ", " +
                                                          d.getDate() + nth(d.getDate());
@@ -106,7 +111,7 @@ function nextDates() {
                                                              d2.getDate() + nth(d2.getDate()) + ".";
 
     if (days_till_next === 0)
-        document.getElementById("js-days-to-go").innerHTML = "That's today!";
+        document.getElementById("js-days-to-go").innerHTML = "That's tonight!";
     else if (days_till_next === 1)
         document.getElementById("js-days-to-go").innerHTML = "That's tomorrow!";
     else
