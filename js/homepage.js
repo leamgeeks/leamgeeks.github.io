@@ -95,7 +95,8 @@ function nextDates() {
         d = getNextEvent(0),
         d2 = getNextEvent(1),
         monthNames = [ "January", "February", "March", "April", "May", "June",
-                       "July", "August", "September", "October", "November", "December" ];
+                       "July", "August", "September", "October", "November", "December" ],
+        days_till_next = Math.round((d.getTime() - now.getTime())/(24 * 60 * 60 * 1000));
 
     document.getElementById("js-date-next").innerHTML = "Tuesday, " + monthNames[d.getMonth()] + ", " +
                                                          d.getDate() + nth(d.getDate());
@@ -104,9 +105,12 @@ function nextDates() {
                                                              monthNames[d2.getMonth()] + " " +
                                                              d2.getDate() + nth(d2.getDate()) + ".";
 
-    document.getElementById("js-days-to-go").innerHTML = "That's in " +
-                                                         Math.round((d.getTime() - now.getTime())/(24 * 60 * 60 * 1000)) +
-                                                         " days.";
+    if (days_till_next === 0)
+        document.getElementById("js-days-to-go").innerHTML = "That's today!";
+    else if (days_till_next === 1)
+        document.getElementById("js-days-to-go").innerHTML = "That's tomorrow!";
+    else
+        document.getElementById("js-days-to-go").innerHTML = "That's in " + days_till_next + " days.";
 
 }
 
