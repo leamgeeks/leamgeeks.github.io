@@ -72,7 +72,7 @@ function getNextEvent(skip) {
         dow = 2; // Tuesday
 
     // fix time - so days till next event works properly
-    next.setHours(23);
+    next.setHours(22);
     next.setMinutes(59);
     next.setSeconds(59);
 
