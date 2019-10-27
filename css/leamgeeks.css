@@ -5,7 +5,7 @@
 html {
     font-family: "adelle", serif;
     font-weight: 300;
-    font-size: 13px;
+    font-size: 16px;
     background-color: rgba(43, 182, 115, 0.0625);
     line-height: 1.5;
 }
@@ -68,15 +68,13 @@ body {
 
 @media screen and (max-width: 600px) {
     h1, h2 {
-        font-size: 1em;     /* 14/13 */
-        font-size: 1rem;    /* 14/13 */
+        font-size: 18pt;
     }
     p {
-        font-size: 0.85em;
-        font-size: 0.85rem;
+        font-size: 13pt;
     }
     .logo {
-        width: 75%;
+        width: 80%;
         padding-bottom: 18.75%;
     }
 }
