@@ -69,7 +69,7 @@ function getNextEvent(skip) {
 
     var next = new Date(),
         nextWeek,
-        dow = 2; // Tuesday
+        dow = 1; // Monday
 
     // fix time - so days till next event works properly
     next.setHours(22);
@@ -79,9 +79,9 @@ function getNextEvent(skip) {
     while (true) {
         if (next.getDay() == dow) {
             nextWeek = new Date(next.getTime() + (7 * 24 * 60 * 60 * 1000));
-            if (next.getMonth() == 11 && next.getDate() >= 15 && next.getDate() <= 21 && skip-- == 0) // Decmeber's meetings are the 3rd Tuesday
+            if (next.getMonth() == 11 && next.getDate() >= 15 && next.getDate() <= 21 && skip-- == 0) // December's meetings are the 3rd Monday
                 return next;
-            else if (next.getMonth() != 11 && nextWeek.getMonth() != next.getMonth() && skip-- == 0) // Normal meetings last Tuesday of month
+            else if (next.getMonth() != 11 && nextWeek.getMonth() != next.getMonth() && skip-- == 0) // Normal meetings last Monday of month
                 return next;
             else
                 next = nextWeek; //skip to the next week
@@ -103,10 +103,10 @@ function nextDates() {
                        "July", "August", "September", "October", "November", "December" ],
         days_till_next = Math.floor((d.getTime() - now.getTime())/(24 * 60 * 60 * 1000));
 
-    document.getElementById("js-date-next").innerHTML = "Tuesday, " + monthNames[d.getMonth()] + ", " +
+    document.getElementById("js-date-next").innerHTML = "Monday, " + monthNames[d.getMonth()] + ", " +
                                                          d.getDate() + nth(d.getDate());
 
-    document.getElementById("js-date-next-next").innerHTML = monthNames[d2.getMonth()] + "'s meet: Tuesday, " +
+    document.getElementById("js-date-next-next").innerHTML = monthNames[d2.getMonth()] + "'s meet: Monday, " +
                                                              monthNames[d2.getMonth()] + " " +
                                                              d2.getDate() + nth(d2.getDate()) + ".";
 
