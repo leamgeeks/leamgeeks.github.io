@@ -3,79 +3,90 @@
 */
 
 html {
-    font-family: "adelle", serif;
-    font-weight: 300;
-    font-size: 16px;
-    background-color: rgba(43, 182, 115, 0.0625);
-    line-height: 1.5;
+  font-family: 'adelle', serif;
+  font-weight: 300;
+  font-size: 16px;
+  background-color: rgba(43, 182, 115, 0.0625);
+  line-height: 1.5;
 }
 
-h1, h2 {
-    font-size: 1.615em;     /* 16/13 */
-    font-size: 1.615rem;    /* 16/13 */
+h1,
+h2 {
+  font-size: 1.615em; /* 16/13 */
+  font-size: 1.615rem; /* 16/13 */
 }
-h1, h2 {
-    font-family: "proxima-nova", sans;
-    font-weight: 300;
-    text-align: center;
+h1,
+h2 {
+  font-family: 'proxima-nova', sans;
+  font-weight: 300;
+  text-align: center;
 }
-h1, h2, a {
-    color: #2bb673;
+h1,
+h2,
+a {
+  color: #2bb673;
 }
 .person {
-    font-family: "reklame-script", "proxima-nova", sans;
-    font-weight: 500;
-    color: #444;
+  font-family: 'reklame-script', 'proxima-nova', sans;
+  font-weight: 500;
+  color: #444;
 }
 .logo {
-    text-transform: uppercase;
-    margin: 0 auto;
-    width: 50%;
-    height: 0;
-    padding-bottom: 12.5%;
-    position: relative;
+  text-transform: uppercase;
+  margin: 0 auto;
+  width: 50%;
+  height: 0;
+  padding-bottom: 12.5%;
+  position: relative;
 }
 .logo span {
-    background-image: url('/img/logo-header.svg');
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+  background-image: url('/img/logo-header.svg');
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .hide-text {
-    text-indent: 200%;
-    white-space: nowrap;
-    overflow: hidden;
+  text-indent: 200%;
+  white-space: nowrap;
+  overflow: hidden;
 }
-html, body, .content--outer-wrap, .content--inner-wrap {
-    height: 100%;
+html,
+body,
+.content--outer-wrap,
+.content--inner-wrap {
+  height: 100%;
 }
 body {
-    margin: 0;
+  margin: 0;
 }
 .content--outer-wrap {
-    display: table;
-    width: 100%;
+  display: table;
+  width: 100%;
 }
 .content--inner-wrap {
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-    padding: 2.5% 5%;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  padding: 2.5% 5%;
+}
+
+.content-justify {
+  text-align: justify;
 }
 
 @media screen and (max-width: 600px) {
-    h1, h2 {
-        font-size: 18pt;
-    }
-    p {
-        font-size: 13pt;
-    }
-    .logo {
-        width: 80%;
-        padding-bottom: 18.75%;
-    }
+  h1,
+  h2 {
+    font-size: 18pt;
+  }
+  p {
+    font-size: 13pt;
+  }
+  .logo {
+    width: 80%;
+    padding-bottom: 18.75%;
+  }
 }
-
